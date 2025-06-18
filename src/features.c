@@ -94,3 +94,33 @@ void second_line(const char *source_path)
     printf("second_line: %d, %d, %d\n", r, g, b);
     free(data);
 }
+
+void max_pixel(const char *source_path)
+{
+    unsigned char *data = NULL;
+    int w = 0, h = 0, ch = 0;
+    if (read_image_data(source_path, &data, &w, &h, &ch) != 0) {
+        fputs("error: impossible de charger « ", stderr);
+        fputs(source_path, stderr);
+        fputs(" »\n", stderr);
+        return;
+    }
+    int max_sum = -1;
+    int max_x = 0, max_y = 0, r = 0, g = 0, b = 0;
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            int idx = (y * w + x) * ch;
+            int rr = data[idx];
+            int gg = data[idx + 1];
+            int bb = data[idx + 2];
+            int sum = rr + gg + bb;
+            if (sum > max_sum) {
+                max_sum = sum;
+                max_x = x; max_y = y;
+                r = rr; g = gg; b = bb;
+            }
+        }
+    }
+    printf("max_pixel (%d, %d): %d, %d, %d\n", max_x, max_y, r, g, b);
+    free(data);
+}
