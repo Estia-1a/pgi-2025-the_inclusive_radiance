@@ -29,3 +29,5 @@ void min_component(const char *source_path, char comp);
 void stat_report(const char *source_path);
 
 void scale_crop(const char *source_path, int cx, int cy, int w, int h);
+
+void scale_nearest(const char *source_path, float scale);
