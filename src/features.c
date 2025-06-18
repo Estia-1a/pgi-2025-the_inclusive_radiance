@@ -511,3 +511,31 @@ void color_gray_luminance(const char *filename)
     free(data);
     free(out);
 }
+
+void rotate_cw(const char *filename)
+{
+    unsigned char *data, *out;
+    int width, height, channels;
+    if (read_image_data((char*)filename, &data, &width, &height, &channels))
+        return;
+
+    int new_width  = height;
+    int new_height = width;
+    size_t total   = (size_t)width * height;
+    out = malloc(total * channels);
+
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int new_x = height - 1 - y;
+            int new_y = x;
+            unsigned char *src = data + ((size_t)y * width + x) * channels;
+            unsigned char *dst = out  + ((size_t)new_y * new_width + new_x) * channels;
+            for (int c = 0; c < channels; c++)
+                dst[c] = src[c];
+        }
+    }
+
+    write_image_data("image_out.bmp", out, new_width, new_height);
+    free(data);
+    free(out);
+}

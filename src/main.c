@@ -143,3 +143,7 @@ else if (strncmp(configuration.command, "color_desaturate", 16) == 0) {
 } else if (strncmp(configuration.command, "color_gray_luminance", 20) == 0) {
     color_gray_luminance(configuration.filenames[0]);
 }
+
+} else if (strncmp(configuration.command, "rotate_cw", 9) == 0) {
+    rotate_cw(configuration.filenames[0]);
+}

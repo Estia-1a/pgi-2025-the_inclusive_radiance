@@ -45,3 +45,5 @@ void color_gray(const char *filename);
 void color_invert(const char *filename);
 
 void color_gray_luminance(const char *filename);
+
+void rotate_cw(const char *filename);
