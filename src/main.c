@@ -93,3 +93,7 @@ else if (strncmp(configuration.command, "min_component", 13) == 0) {
     min_component(configuration.filenames[0], comp);
 }
 
+else if (strncmp(configuration.command, "stat_report", 11) == 0) {
+    if (configuration.filenames_count < 1) return 1;
+    stat_report(configuration.filenames[0]);
+}

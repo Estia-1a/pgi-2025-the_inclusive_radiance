@@ -291,3 +291,4 @@ void stat_report(const char *source_path)
     fclose(out);
     free(buf);
 }
+
