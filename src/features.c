@@ -320,3 +320,25 @@ void scale_crop(const char *source_path, int cx, int cy, int w, int h)
     free(orig);
     free(out);
 }
+
+void color_green(const char *filename)
+{
+    unsigned char *data, *out;
+    int width, height, channels;
+    if (read_image_data((char*)filename, &data, &width, &height, &channels)) return;
+
+    size_t total = (size_t)width * height;
+    out = malloc(total * channels);
+    for (size_t i = 0; i < total; i++) {
+        unsigned char *src = data + i * channels;
+        unsigned char *dst = out  + i * channels;
+        if (channels > 0) dst[0] = 0;
+        if (channels > 1) dst[1] = src[1];
+        if (channels > 2) dst[2] = 0;
+        if (channels > 3) dst[3] = src[3];
+    }
+
+    write_image_data("image_out.bmp", out, width, height);
+    free(data);
+    free(out);
+}

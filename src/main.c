@@ -107,5 +107,10 @@ else if (strncmp(configuration.command, "scale_crop", 10) == 0) {
     scale_crop(configuration.filenames[0], cx, cy, w, h);
 }
 
+else if ( strncmp( configuration.command, "color_green", 11 ) == 0 ) {
+    color_green(configuration.filenames[0]);
+    return 0;
+}
+
 
 
