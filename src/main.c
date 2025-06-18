@@ -118,4 +118,10 @@ else if (strncmp(configuration.command, "scale_nearest", 13) == 0) {
     scale_nearest(configuration.filenames[0], s);
 }
 
+else if (strncmp(configuration.command, "scale_bilinear", 14) == 0) {
+    if (configuration.filenames_count < 1 || configuration.argc_extra < 1) return 1;
+    scale_bilinear(configuration.filenames[0], atof(configuration.extra_args[0]));
+}
+
+
 
