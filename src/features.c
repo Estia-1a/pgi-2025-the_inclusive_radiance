@@ -124,3 +124,4 @@ void max_pixel(const char *source_path)
     printf("max_pixel (%d, %d): %d, %d, %d\n", max_x, max_y, r, g, b);
     free(data);
 }
+
