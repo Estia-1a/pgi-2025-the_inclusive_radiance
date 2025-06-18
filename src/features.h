@@ -35,3 +35,5 @@ void scale_nearest(const char *source_path, float scale);
 void color_green(const char *filename);
 
 void scale_bilinear(const char *path, float scale);
+
+void color_desaturate(const char *source_path);
