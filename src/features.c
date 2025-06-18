@@ -76,3 +76,21 @@ void tenth_pixel(char *source_path) {
     printf("tenth_pixel: %d, %d, %d\n", r, g, b);
     free(data);
 }
+
+void second_line(const char *source_path)
+{
+    unsigned char *data = NULL;
+    int w = 0, h = 0, c = 0;
+    if (read_image_data(source_path, &data, &w, &h, &c) != 0) {
+        fputs("error: impossible de charger « ", stderr);
+        fputs(source_path, stderr);
+        fputs(" »\n", stderr);
+        return;
+    }
+    int offset = w * c;
+    int r = data[offset];
+    int g = data[offset + 1];
+    int b = data[offset + 2];
+    printf("second_line: %d, %d, %d\n", r, g, b);
+    free(data);
+}

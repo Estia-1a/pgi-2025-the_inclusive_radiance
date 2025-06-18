@@ -54,3 +54,8 @@ else if (strncmp(configuration.command, "dimension", 9) == 0) {
 } else if ( strncmp( configuration.command, "tenth_pixel", 11 ) == 0 ) {
     tenth_pixel(configuration.filenames[0]);
 }
+
+else if (strncmp(configuration.command, "second_line", 11) == 0) {
+        if (configuration.filenames_count < 1) return 1;
+        second_line(configuration.filenames[0]);
+    }
