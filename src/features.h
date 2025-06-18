@@ -23,3 +23,5 @@ void print_pixel(const char *filename,int x,int y);
 void color_red(const char *filename);
 
 void max_component(const char *source_path, char comp);
+
+void min_component(const char *source_path, char comp);
