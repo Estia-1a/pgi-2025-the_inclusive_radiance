@@ -123,5 +123,9 @@ else if (strncmp(configuration.command, "scale_bilinear", 14) == 0) {
     scale_bilinear(configuration.filenames[0], atof(configuration.extra_args[0]));
 }
 
+else if (strncmp(configuration.command, "color_desaturate", 16) == 0) {
+    if (configuration.filenames_count < 1) return 1;
+    color_desaturate(configuration.filenames[0]);
+}
 
 
