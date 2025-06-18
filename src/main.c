@@ -97,3 +97,15 @@ else if (strncmp(configuration.command, "stat_report", 11) == 0) {
     if (configuration.filenames_count < 1) return 1;
     stat_report(configuration.filenames[0]);
 }
+
+else if (strncmp(configuration.command, "scale_crop", 10) == 0) {
+    if (configuration.filenames_count < 1 || configuration.argc_extra < 4) return 1;
+    int cx = atoi(configuration.extra_args[0]);
+    int cy = atoi(configuration.extra_args[1]);
+    int w  = atoi(configuration.extra_args[2]);
+    int h  = atoi(configuration.extra_args[3]);
+    scale_crop(configuration.filenames[0], cx, cy, w, h);
+}
+
+
+
