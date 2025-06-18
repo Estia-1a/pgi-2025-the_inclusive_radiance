@@ -366,3 +366,37 @@ void scale_nearest(const char *source_path, float scale)
     free(src);
     free(dst);
 }
+
+void scale_bilinear(const char *path, float scale)
+{
+    unsigned char *src = NULL;
+    int ow = 0, oh = 0, ch = 0;
+    if (read_image_data(path, &src, &ow, &oh, &ch) != 0) return;
+    int nw = (int)(ow * scale), nh = (int)(oh * scale);
+    unsigned char *dst = malloc(nw * nh * ch);
+    if (!dst) { free(src); return; }
+    for (int y = 0; y < nh; y++) {
+        float gy = y / scale;
+        int y0 = (int)gy, y1 = y0 + 1 < oh ? y0 + 1 : oh - 1;
+        float dy = gy - y0;
+        for (int x = 0; x < nw; x++) {
+            float gx = x / scale;
+            int x0 = (int)gx, x1 = x0 + 1 < ow ? x0 + 1 : ow - 1;
+            float dx = gx - x0;
+            for (int c = 0; c < ch; c++) {
+                int i00 = (y0 * ow + x0) * ch + c;
+                int i01 = (y0 * ow + x1) * ch + c;
+                int i10 = (y1 * ow + x0) * ch + c;
+                int i11 = (y1 * ow + x1) * ch + c;
+                float v = (1 - dx) * (1 - dy) * src[i00]
+                        + dx * (1 - dy) * src[i01]
+                        + (1 - dx) * dy       * src[i10]
+                        + dx * dy             * src[i11];
+                dst[(y * nw + x) * ch + c] = (unsigned char)(v + 0.5f);
+            }
+        }
+    }
+    write_image_data("image_out.bmp", dst, nw, nh, ch);
+    free(src);
+    free(dst);
+}
