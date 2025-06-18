@@ -37,22 +37,16 @@ int main(int argc, char **argv) {
   
   return 0;
 }
-
-int main(int argc, char *argv[])
-{
-    parse_config(argc, argv);
-
-    if (strcmp(cfg.command, "dimension") == 0) {
-        if (cfg.input_count < 1) {
-            fputs("error: aucun fichier spécifié pour « dimension »\n",
-                  stderr);
-            return 1;
-        }
-        dimension(cfg.inputs[0]);
-        return 0;
+else if (strncmp(configuration.command, "dimension", 9) == 0) {
+    if (configuration.filenames_count < 1) {
+        fputs("error: aucun fichier spécifié pour « dimension »\n", stderr);
+        return 1;
     }
+    dimension(configuration.filenames[0]);
+}
+
+
   } else if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
-    /* first_pixel() function is defined in feature.h and implemented in feature.c */
     first_pixel(configuration.filenames[0]);
     return 0;
 }
