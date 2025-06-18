@@ -239,3 +239,55 @@ void min_component(const char *source_path, char comp)
     printf("min_component %c (%d, %d): %d\n", comp, bx, by, value);
     free(dat);
 }
+
+void stat_report(const char *source_path)
+{
+    unsigned char *buf = NULL;
+    int w = 0, h = 0, ch = 0;
+    if (read_image_data(source_path, &buf, &w, &h, &ch) != 0) return;
+
+    FILE *out = fopen("stat_report.txt", "w");
+    if (!out) { free(buf); return; }
+
+    fprintf(out, "dimension: %d, %d\n\n", w, h);
+
+    int maxs = -1, mx = 0, my = 0;
+    int mins = INT_MAX, ix = 0, iy = 0;
+    for (int y = 0; y < h; y++)
+        for (int x = 0; x < w; x++) {
+            int i = (y * w + x) * ch;
+            int r = buf[i], g = buf[i+1], b = buf[i+2];
+            int s = r + g + b;
+            if (s > maxs) { maxs = s; mx = x; my = y; }
+            if (s < mins) { mins = s; ix = x; iy = y; }
+        }
+    fprintf(out, "max_pixel (%d, %d): %d, %d, %d\n\n",
+            mx, my,
+            buf[(my*w+mx)*ch],
+            buf[(my*w+mx)*ch+1],
+            buf[(my*w+mx)*ch+2]);
+    fprintf(out, "min_pixel (%d, %d): %d, %d, %d\n\n",
+            ix, iy,
+            buf[(iy*w+ix)*ch],
+            buf[(iy*w+ix)*ch+1],
+            buf[(iy*w+ix)*ch+2]);
+
+    for (int c = 0; c < 3; c++) {
+        int bestMax = -1, bx = 0, by = 0;
+        int bestMin = 256, nx = 0, ny = 0;
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++) {
+                int v = buf[(y*w+x)*ch + c];
+                if (v > bestMax) { bestMax = v; bx = x; by = y; }
+                if (v < bestMin) { bestMin = v; nx = x; ny = y; }
+            }
+        char comp = (c==0?'R':c==1?'G':'B');
+        fprintf(out, "max_component %c (%d, %d): %d\n\n",
+                comp, bx, by, bestMax);
+        fprintf(out, "min_component %c (%d, %d): %d\n\n",
+                comp, nx, ny, bestMin);
+    }
+
+    fclose(out);
+    free(buf);
+}
