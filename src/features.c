@@ -489,3 +489,25 @@ void color_invert(const char *filename)
     free(data);
     free(out);
 }
+
+void color_gray_luminance(const char *filename)
+{
+    unsigned char *data, *out;
+    int width, height, channels;
+    if (read_image_data((char*)filename, &data, &width, &height, &channels))
+        return;
+    size_t total = (size_t)width * height;
+    out = malloc(total * channels);
+    for (size_t i = 0; i < total; i++) {
+        unsigned char *src = data + i * channels;
+        unsigned char *dst = out  + i * channels;
+        unsigned char v = (unsigned char)(0.21f * src[0] + 0.72f * src[1] + 0.07f * src[2]);
+        if (channels > 0) dst[0] = v;
+        if (channels > 1) dst[1] = v;
+        if (channels > 2) dst[2] = v;
+        if (channels > 3) dst[3] = src[3];
+    }
+    write_image_data("image_out.bmp", out, width, height);
+    free(data);
+    free(out);
+}
