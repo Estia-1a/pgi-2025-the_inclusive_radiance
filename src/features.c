@@ -153,3 +153,19 @@ void min_pixel(const char *source_path)
     free(buf);
 }
 
+typedef struct { unsigned char R, G, B; } PixelRGB;
+
+static PixelRGB* get_pixel(unsigned char *data, unsigned int width, unsigned int height,
+                           unsigned int channels, unsigned int x, unsigned int y) {
+    if (!data || x >= width || y >= height) return NULL;
+    return (PixelRGB*)(data + ((size_t)y * width + x) * channels);
+}
+
+void print_pixel(const char *filename, int x, int y) {
+    unsigned char *data;
+    int width, height, channels;
+    if (read_image_data((char*)filename, &data, &width, &height, &channels)) return;
+    PixelRGB *p = get_pixel(data, width, height, channels, x, y);
+    if (p) printf("print_pixel (%d,%d): %u,%u,%u\n", x, y, p->R, p->G, p->B);
+    free(data);
+}
