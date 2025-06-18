@@ -188,3 +188,29 @@ void color_red(const char *filename){
     free(data);
     free(out);
 }
+
+void max_component(const char *source_path, char comp)
+{
+    unsigned char *data = NULL;
+    int w = 0, h = 0, ch = 0;
+    if (read_image_data(source_path, &data, &w, &h, &ch) != 0) {
+        fputs("error: impossible de charger « ", stderr);
+        fputs(source_path, stderr);
+        fputs(" »\n", stderr);
+        return;
+    }
+    int comp_idx = (comp == 'G') ? 1 : (comp == 'B') ? 2 : 0;
+    int best = -1, bx = 0, by = 0, v = 0;
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            int idx = (y * w + x) * ch + comp_idx;
+            int cur = data[idx];
+            if (cur > best) {
+                best = cur;
+                bx = x; by = y; v = cur;
+            }
+        }
+    }
+    printf("max_component %c (%d, %d): %d\n", comp, bx, by, v);
+    free(data);
+}
