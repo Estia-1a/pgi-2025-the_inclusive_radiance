@@ -50,3 +50,29 @@ void first_pixel(char *source_path) {
     printf("first_pixel: %d, %d, %d\n", r, g, b);
     free(data);
 }
+
+void tenth_pixel(char *source_path) {
+    unsigned char *data;
+    int width, height, channels;
+    int result = read_image_data(source_path, &data, &width, &height, &channels);
+    if (result != 0) {
+        printf("Error reading image\n");
+        return;
+    }
+    if (channels < 3) {
+        printf("Need at least 3 channels\n");
+        free(data);
+        return;
+    }
+    if (width < 10) {
+        printf("Image must be at least 10 pixels wide\n");
+        free(data);
+        return;
+    }
+    int pixel_index = 9 * channels;
+    int r = data[pixel_index];
+    int g = data[pixel_index + 1];
+    int b = data[pixel_index + 2];
+    printf("tenth_pixel: %d, %d, %d\n", r, g, b);
+    free(data);
+}
