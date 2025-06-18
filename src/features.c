@@ -125,3 +125,31 @@ void max_pixel(const char *source_path)
     free(data);
 }
 
+void min_pixel(const char *source_path)
+{
+    unsigned char *buf = NULL;
+    int w = 0, h = 0, ch = 0;
+    if (read_image_data(source_path, &buf, &w, &h, &ch) != 0) {
+        fputs("error: impossible de charger « ", stderr);
+        fputs(source_path, stderr);
+        fputs(" »\n", stderr);
+        return;
+    }
+    int min_sum = INT_MAX;
+    int mx = 0, my = 0, r = 0, g = 0, b = 0;
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            int idx = (y * w + x) * ch;
+            int rr = buf[idx], gg = buf[idx + 1], bb = buf[idx + 2];
+            int sum = rr + gg + bb;
+            if (sum < min_sum) {
+                min_sum = sum;
+                mx = x; my = y;
+                r = rr; g = gg; b = bb;
+            }
+        }
+    }
+    printf("min_pixel (%d, %d): %d, %d, %d\n", mx, my, r, g, b);
+    free(buf);
+}
+
