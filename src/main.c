@@ -34,6 +34,9 @@ int main(int argc, char **argv) {
   /*
    * TO COMPLETE
    */
-  
+    } else if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
+    first_pixel(configuration.filenames[0]);
+ 
   return 0;
 }
