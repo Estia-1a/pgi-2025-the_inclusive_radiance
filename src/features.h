@@ -39,3 +39,5 @@ void scale_bilinear(const char *path, float scale);
 void color_desaturate(const char *source_path);
 
 void color_blue(const char *filename);
+
+void color_gray(const char *filename);
