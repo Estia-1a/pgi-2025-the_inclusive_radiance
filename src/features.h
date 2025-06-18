@@ -15,3 +15,5 @@ void tenth_pixel(char *source_path);
 void second_line(const char *source_path);
 
 void max_pixel(const char *source_path);
+
+void print_pixel(const char *filename,int x,int y);
