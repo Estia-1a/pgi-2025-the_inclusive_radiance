@@ -214,3 +214,28 @@ void max_component(const char *source_path, char comp)
     printf("max_component %c (%d, %d): %d\n", comp, bx, by, v);
     free(data);
 }
+
+void min_component(const char *source_path, char comp)
+{
+    unsigned char *dat = NULL;
+    int width = 0, height = 0, channels = 0;
+    if (read_image_data(source_path, &dat, &width, &height, &channels) != 0) {
+        fputs("error: impossible de charger « ", stderr);
+        fputs(source_path, stderr);
+        fputs(" »\n", stderr);
+        return;
+    }
+    int idx_comp = (comp == 'G') ? 1 : (comp == 'B') ? 2 : 0;
+    int best = 256, bx = 0, by = 0, value = 0;
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int i = (y * width + x) * channels + idx_comp;
+            int cur = dat[i];
+            if (cur < best) {
+                best = cur; bx = x; by = y; value = cur;
+            }
+        }
+    }
+    printf("min_component %c (%d, %d): %d\n", comp, bx, by, value);
+    free(dat);
+}
