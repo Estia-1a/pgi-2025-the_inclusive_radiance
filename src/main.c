@@ -46,12 +46,12 @@ else if (strncmp(configuration.command, "dimension", 9) == 0) {
 }
 
 
-  } else if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
+else if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
     first_pixel(configuration.filenames[0]);
     return 0;
 }
 
-} else if ( strncmp( configuration.command, "tenth_pixel", 11 ) == 0 ) {
+else if ( strncmp( configuration.command, "tenth_pixel", 11 ) == 0 ) {
     tenth_pixel(configuration.filenames[0]);
 }
 
@@ -63,16 +63,19 @@ else if (strncmp(configuration.command, "second_line", 11) == 0) {
 else if (strncmp(configuration.command, "max_pixel", 9) == 0) {
     if (configuration.filenames_count < 1) return 1;
     max_pixel(configuration.filenames[0]);
+}
 
 else if (strncmp(configuration.command, "min_pixel", 9) == 0) {
     if (configuration.filenames_count < 1) return 1;
     min_pixel(configuration.filenames[0]);
+}
 
-  } else if ( strncmp( configuration.command, "print_pixel", 11 ) == 0 ) {
+else if ( strncmp( configuration.command, "print_pixel", 11 ) == 0 ) {
     print_pixel(configuration.filenames[0]);
     return 0;
 }
-  } else if ( strncmp( configuration.command, "color_red", 9 ) == 0 ) {
+
+else if ( strncmp( configuration.command, "color_red", 9 ) == 0 ) {
     color_red(configuration.filenames[0]);
     return 0;
 }
