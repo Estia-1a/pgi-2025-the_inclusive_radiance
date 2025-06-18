@@ -92,3 +92,4 @@ else if (strncmp(configuration.command, "min_component", 13) == 0) {
     char comp = configuration.extra_args[0][0];
     min_component(configuration.filenames[0], comp);
 }
+
