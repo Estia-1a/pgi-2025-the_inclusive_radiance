@@ -400,3 +400,30 @@ void scale_bilinear(const char *path, float scale)
     free(src);
     free(dst);
 }
+
+void color_desaturate(const char *source_path)
+{
+    unsigned char *src = NULL;
+    int w = 0, h = 0, ch = 0;
+    if (read_image_data(source_path, &src, &w, &h, &ch)) return;
+    unsigned char *dst = malloc(w * h * ch);
+    if (!dst) { free(src); return; }
+
+    for (int i = 0; i < w * h; i++) {
+        int idx = i * ch;
+        int r = src[idx];
+        int g = src[idx + 1];
+        int b = src[idx + 2];
+        int mn = r < g ? (r < b ? r : b) : (g < b ? g : b);
+        int mx = r > g ? (r > b ? r : b) : (g > b ? g : b);
+        unsigned char v = (unsigned char)((mn + mx) / 2);
+        dst[idx]     = v;
+        dst[idx + 1] = v;
+        dst[idx + 2] = v;
+        if (ch == 4) dst[idx + 3] = src[idx + 3];
+    }
+
+    write_image_data("image_out.bmp", dst, w, h, ch);
+    free(src);
+    free(dst);
+}
