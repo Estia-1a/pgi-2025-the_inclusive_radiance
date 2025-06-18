@@ -86,3 +86,4 @@ else if (strncmp(configuration.command, "max_component", 13) == 0) {
     char comp = configuration.extra_args[0][0];
     max_component(configuration.filenames[0], comp);
 }
+
