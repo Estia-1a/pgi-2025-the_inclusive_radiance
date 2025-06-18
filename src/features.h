@@ -4,6 +4,6 @@
 
 void helloWorld();
 
-void first_pixel(char *source_path);
-
 #endif
+
+void dimension(const char *source_path);
