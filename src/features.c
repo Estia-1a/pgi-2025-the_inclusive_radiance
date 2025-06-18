@@ -169,3 +169,22 @@ void print_pixel(const char *filename, int x, int y) {
     if (p) printf("print_pixel (%d,%d): %u,%u,%u\n", x, y, p->R, p->G, p->B);
     free(data);
 }
+
+void color_red(const char *filename){
+    unsigned char *data, *out;
+    int width,height,channels;
+    if(read_image_data((char*)filename,&data,&width,&height,&channels)) return;
+    size_t total = (size_t)width*height;
+    out = malloc(total*channels);
+    for(size_t i=0;i<total;i++){
+        unsigned char *src = data + i*channels;
+        unsigned char *dst = out  + i*channels;
+        dst[0] = src[0];
+        if(channels>1) dst[1] = 0;
+        if(channels>2) dst[2] = 0;
+        if(channels>3) dst[3] = src[3];
+    }
+    write_image_data("image_out.bmp",out,width,height);
+    free(data);
+    free(out);
+}
