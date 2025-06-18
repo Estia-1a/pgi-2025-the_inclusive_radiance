@@ -292,3 +292,31 @@ void stat_report(const char *source_path)
     free(buf);
 }
 
+void scale_crop(const char *source_path, int cx, int cy, int w, int h)
+{
+    unsigned char *orig = NULL;
+    int ow = 0, oh = 0, ch = 0;
+    if (read_image_data(source_path, &orig, &ow, &oh, &ch) != 0) return;
+
+    unsigned char *out = malloc(w * h * ch);
+    if (!out) { free(orig); return; }
+
+    int halfw = w / 2, halfh = h / 2;
+    for (int y = 0; y < h; y++) {
+        int sy = cy - halfh + y;
+        if (sy < 0) sy = 0;
+        if (sy >= oh) sy = oh - 1;
+        for (int x = 0; x < w; x++) {
+            int sx = cx - halfw + x;
+            if (sx < 0) sx = 0;
+            if (sx >= ow) sx = ow - 1;
+            for (int c = 0; c < ch; c++) {
+                out[(y * w + x) * ch + c] = orig[(sy * ow + sx) * ch + c];
+            }
+        }
+    }
+
+    write_image_data("image_out.bmp", out, w, h, ch);
+    free(orig);
+    free(out);
+}
