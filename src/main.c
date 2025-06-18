@@ -67,3 +67,8 @@ else if (strncmp(configuration.command, "max_pixel", 9) == 0) {
 else if (strncmp(configuration.command, "min_pixel", 9) == 0) {
     if (configuration.filenames_count < 1) return 1;
     min_pixel(configuration.filenames[0]);
+
+  } else if ( strncmp( configuration.command, "print_pixel", 11 ) == 0 ) {
+    print_pixel(configuration.filenames[0]);
+    return 0;
+}
