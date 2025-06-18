@@ -342,3 +342,27 @@ void color_green(const char *filename)
     free(data);
     free(out);
 }
+
+void scale_nearest(const char *source_path, float scale)
+{
+    unsigned char *src = NULL;
+    int ow = 0, oh = 0, ch = 0;
+    if (read_image_data(source_path, &src, &ow, &oh, &ch) != 0) return;
+    int nw = (int)(ow * scale);
+    int nh = (int)(oh * scale);
+    unsigned char *dst = malloc(nw * nh * ch);
+    if (!dst) { free(src); return; }
+    for (int y = 0; y < nh; y++) {
+        int sy = (int)floorf(y / scale);
+        if (sy < 0) sy = 0; else if (sy >= oh) sy = oh - 1;
+        for (int x = 0; x < nw; x++) {
+            int sx = (int)floorf(x / scale);
+            if (sx < 0) sx = 0; else if (sx >= ow) sx = ow - 1;
+            for (int c = 0; c < ch; c++)
+                dst[(y * nw + x) * ch + c] = src[(sy * ow + sx) * ch + c];
+        }
+    }
+    write_image_data("image_out.bmp", dst, nw, nh, ch);
+    free(src);
+    free(dst);
+}
