@@ -87,3 +87,8 @@ else if (strncmp(configuration.command, "max_component", 13) == 0) {
     max_component(configuration.filenames[0], comp);
 }
 
+else if (strncmp(configuration.command, "min_component", 13) == 0) {
+    if (configuration.filenames_count < 1 || configuration.argc_extra < 1) return 1;
+    char comp = configuration.extra_args[0][0];
+    min_component(configuration.filenames[0], comp);
+}
