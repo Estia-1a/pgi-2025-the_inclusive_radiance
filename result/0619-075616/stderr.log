@@ -1,0 +1,385 @@
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘dimension’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:31:5: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+   31 |     free(pixels);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:6:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+    5 | #include "utils.h"
+  +++ |+#include <stdlib.h>
+    6 | 
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:31:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+   31 |     free(pixels);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:31:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘first_pixel’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:44:9: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+   44 |         free(data);
+      |         ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:44:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:51:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+   51 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:51:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘tenth_pixel’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:64:9: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+   64 |         free(data);
+      |         ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:64:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:69:9: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+   69 |         free(data);
+      |         ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:69:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:77:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+   77 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:77:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘second_line’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:95:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+   95 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:95:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘max_pixel’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:125:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  125 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:125:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘min_pixel’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:138:19: error: ‘INT_MAX’ undeclared (first use in this function)
+  138 |     int min_sum = INT_MAX;
+      |                   ^~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:6:1: note: ‘INT_MAX’ is defined in header ‘<limits.h>’; did you forget to ‘#include <limits.h>’?
+    5 | #include "utils.h"
+  +++ |+#include <limits.h>
+    6 | 
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:138:19: note: each undeclared identifier is reported only once for each function it appears in
+  138 |     int min_sum = INT_MAX;
+      |                   ^~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:153:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  153 |     free(buf);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:153:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘print_pixel’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:170:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  170 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:170:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘color_red’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:178:11: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+  178 |     out = malloc(total*channels);
+      |           ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:178:11: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:178:11: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:178:11: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:188:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  188 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:188:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘max_component’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:215:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  215 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:215:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘min_component’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:240:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  240 |     free(dat);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:240:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘stat_report’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:250:17: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  250 |     if (!out) { free(buf); return; }
+      |                 ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:250:17: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:255:16: error: ‘INT_MAX’ undeclared (first use in this function)
+  255 |     int mins = INT_MAX, ix = 0, iy = 0;
+      |                ^~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:255:16: note: ‘INT_MAX’ is defined in header ‘<limits.h>’; did you forget to ‘#include <limits.h>’?
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:292:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  292 |     free(buf);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:292:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘scale_crop’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:301:26: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  301 |     unsigned char *out = malloc(w * h * ch);
+      |                          ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:301:26: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:302:17: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  302 |     if (!out) { free(orig); return; }
+      |                 ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:302:17: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:319:5: error: too many arguments to function ‘write_image_data’
+  319 |     write_image_data("image_out.bmp", out, w, h, ch);
+      |     ^~~~~~~~~~~~~~~~
+In file included from /home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:1:
+/home/runner/work/pgi-2025-the_inclusive_radiance/lib/estia_image/include/estia-image.h:23:5: note: declared here
+   23 | int write_image_data(const char *filename, unsigned char *data, int width, int height);
+      |     ^~~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:320:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  320 |     free(orig);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:320:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘color_green’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:331:11: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  331 |     out = malloc(total * channels);
+      |           ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:331:11: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:342:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  342 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:342:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘scale_nearest’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:353:26: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  353 |     unsigned char *dst = malloc(nw * nh * ch);
+      |                          ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:353:26: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:354:17: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  354 |     if (!dst) { free(src); return; }
+      |                 ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:354:17: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:356:23: warning: implicit declaration of function ‘floorf’ [-Wimplicit-function-declaration]
+  356 |         int sy = (int)floorf(y / scale);
+      |                       ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:6:1: note: include ‘<math.h>’ or provide a declaration of ‘floorf’
+    5 | #include "utils.h"
+  +++ |+#include <math.h>
+    6 | 
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:356:23: warning: incompatible implicit declaration of built-in function ‘floorf’ [-Wbuiltin-declaration-mismatch]
+  356 |         int sy = (int)floorf(y / scale);
+      |                       ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:356:23: note: include ‘<math.h>’ or provide a declaration of ‘floorf’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:365:5: error: too many arguments to function ‘write_image_data’
+  365 |     write_image_data("image_out.bmp", dst, nw, nh, ch);
+      |     ^~~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/lib/estia_image/include/estia-image.h:23:5: note: declared here
+   23 | int write_image_data(const char *filename, unsigned char *data, int width, int height);
+      |     ^~~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:366:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  366 |     free(src);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:366:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘scale_bilinear’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:376:26: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  376 |     unsigned char *dst = malloc(nw * nh * ch);
+      |                          ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:376:26: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:377:17: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  377 |     if (!dst) { free(src); return; }
+      |                 ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:377:17: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:399:5: error: too many arguments to function ‘write_image_data’
+  399 |     write_image_data("image_out.bmp", dst, nw, nh, ch);
+      |     ^~~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/lib/estia_image/include/estia-image.h:23:5: note: declared here
+   23 | int write_image_data(const char *filename, unsigned char *data, int width, int height);
+      |     ^~~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:400:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  400 |     free(src);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:400:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘color_desaturate’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:409:26: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  409 |     unsigned char *dst = malloc(w * h * ch);
+      |                          ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:409:26: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:410:17: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  410 |     if (!dst) { free(src); return; }
+      |                 ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:410:17: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:426:5: error: too many arguments to function ‘write_image_data’
+  426 |     write_image_data("image_out.bmp", dst, w, h, ch);
+      |     ^~~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/lib/estia_image/include/estia-image.h:23:5: note: declared here
+   23 | int write_image_data(const char *filename, unsigned char *data, int width, int height);
+      |     ^~~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:427:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  427 |     free(src);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:427:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘color_blue’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:437:11: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  437 |     out = malloc(total * channels);
+      |           ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:437:11: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:447:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  447 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:447:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘color_gray’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:457:11: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  457 |     out = malloc(total * channels);
+      |           ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:457:11: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:468:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  468 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:468:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘color_invert’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:479:11: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  479 |     out = malloc(total * channels);
+      |           ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:479:11: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:489:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  489 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:489:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘color_gray_luminance’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:500:11: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  500 |     out = malloc(total * channels);
+      |           ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:500:11: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:511:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  511 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:511:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘rotate_cw’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:525:11: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  525 |     out = malloc(total * channels);
+      |           ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:525:11: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:539:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  539 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:539:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘rotate_acw’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:553:11: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  553 |     out = malloc(total * channels);
+      |           ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:553:11: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:567:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  567 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:567:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘mirror_horizontal’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:578:11: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  578 |     out = malloc(total * channels);
+      |           ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:578:11: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:590:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  590 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:590:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘mirror_vertical’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:601:11: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  601 |     out = malloc(total * channels);
+      |           ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:601:11: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:613:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  613 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:613:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘mirror_total’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:624:11: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  624 |     out = malloc(total * channels);
+      |           ^~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:624:11: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:636:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  636 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:636:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:40:1: error: expected identifier or ‘(’ before ‘else’
+   40 | else if (strncmp(configuration.command, "dimension", 9) == 0) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:49:1: error: expected identifier or ‘(’ before ‘else’
+   49 | else if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:54:1: error: expected identifier or ‘(’ before ‘else’
+   54 | else if ( strncmp( configuration.command, "tenth_pixel", 11 ) == 0 ) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:58:1: error: expected identifier or ‘(’ before ‘else’
+   58 | else if (strncmp(configuration.command, "second_line", 11) == 0) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:63:1: error: expected identifier or ‘(’ before ‘else’
+   63 | else if (strncmp(configuration.command, "max_pixel", 9) == 0) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:68:1: error: expected identifier or ‘(’ before ‘else’
+   68 | else if (strncmp(configuration.command, "min_pixel", 9) == 0) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:73:1: error: expected identifier or ‘(’ before ‘else’
+   73 | else if ( strncmp( configuration.command, "print_pixel", 11 ) == 0 ) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:78:1: error: expected identifier or ‘(’ before ‘else’
+   78 | else if ( strncmp( configuration.command, "color_red", 9 ) == 0 ) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:83:1: error: expected identifier or ‘(’ before ‘else’
+   83 | else if (strncmp(configuration.command, "max_component", 13) == 0) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:90:1: error: expected identifier or ‘(’ before ‘else’
+   90 | else if (strncmp(configuration.command, "min_component", 13) == 0) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:96:1: error: expected identifier or ‘(’ before ‘else’
+   96 | else if (strncmp(configuration.command, "stat_report", 11) == 0) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:101:1: error: expected identifier or ‘(’ before ‘else’
+  101 | else if (strncmp(configuration.command, "scale_crop", 10) == 0) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:110:1: error: expected identifier or ‘(’ before ‘else’
+  110 | else if ( strncmp( configuration.command, "color_green", 11 ) == 0 ) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:115:1: error: expected identifier or ‘(’ before ‘else’
+  115 | else if (strncmp(configuration.command, "scale_nearest", 13) == 0) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:121:1: error: expected identifier or ‘(’ before ‘else’
+  121 | else if (strncmp(configuration.command, "scale_bilinear", 14) == 0) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:126:1: error: expected identifier or ‘(’ before ‘else’
+  126 | else if (strncmp(configuration.command, "color_desaturate", 16) == 0) {
+      | ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:131:1: error: expected identifier or ‘(’ before ‘}’ token
+  131 | } else if (strncmp(configuration.command, "color_blue", 10) == 0) {
+      | ^
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:131:3: error: expected identifier or ‘(’ before ‘else’
+  131 | } else if (strncmp(configuration.command, "color_blue", 10) == 0) {
+      |   ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:135:1: error: expected identifier or ‘(’ before ‘}’ token
+  135 | } else if (strncmp(configuration.command, "color_gray", 10) == 0) {
+      | ^
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:135:3: error: expected identifier or ‘(’ before ‘else’
+  135 | } else if (strncmp(configuration.command, "color_gray", 10) == 0) {
+      |   ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:139:1: error: expected identifier or ‘(’ before ‘}’ token
+  139 | } else if (strncmp(configuration.command, "color_invert", 12) == 0) {
+      | ^
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:139:3: error: expected identifier or ‘(’ before ‘else’
+  139 | } else if (strncmp(configuration.command, "color_invert", 12) == 0) {
+      |   ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:143:1: error: expected identifier or ‘(’ before ‘}’ token
+  143 | } else if (strncmp(configuration.command, "color_gray_luminance", 20) == 0) {
+      | ^
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:143:3: error: expected identifier or ‘(’ before ‘else’
+  143 | } else if (strncmp(configuration.command, "color_gray_luminance", 20) == 0) {
+      |   ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:147:1: error: expected identifier or ‘(’ before ‘}’ token
+  147 | } else if (strncmp(configuration.command, "rotate_cw", 9) == 0) {
+      | ^
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:147:3: error: expected identifier or ‘(’ before ‘else’
+  147 | } else if (strncmp(configuration.command, "rotate_cw", 9) == 0) {
+      |   ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:151:1: error: expected identifier or ‘(’ before ‘}’ token
+  151 | } else if (strncmp(configuration.command, "rotate_acw", 10) == 0) {
+      | ^
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:151:3: error: expected identifier or ‘(’ before ‘else’
+  151 | } else if (strncmp(configuration.command, "rotate_acw", 10) == 0) {
+      |   ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:155:1: error: expected identifier or ‘(’ before ‘}’ token
+  155 | } else if (strncmp(configuration.command, "mirror_horizontal", 17) == 0) {
+      | ^
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:155:3: error: expected identifier or ‘(’ before ‘else’
+  155 | } else if (strncmp(configuration.command, "mirror_horizontal", 17) == 0) {
+      |   ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:159:1: error: expected identifier or ‘(’ before ‘}’ token
+  159 | } else if (strncmp(configuration.command, "mirror_vertical", 15) == 0) {
+      | ^
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:159:3: error: expected identifier or ‘(’ before ‘else’
+  159 | } else if (strncmp(configuration.command, "mirror_vertical", 15) == 0) {
+      |   ^~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:163:1: error: expected identifier or ‘(’ before ‘}’ token
+  163 | } else if (strncmp(configuration.command, "mirror_total", 12) == 0) {
+      | ^
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/main.c:163:3: error: expected identifier or ‘(’ before ‘else’
+  163 | } else if (strncmp(configuration.command, "mirror_total", 12) == 0) {
+      |   ^~~~
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:107: CMakeFiles/freud.dir/src/main.c.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:93: CMakeFiles/freud.dir/src/features.c.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/freud.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+
+The process '/usr/local/bin/cmake' failed with exit code 2
