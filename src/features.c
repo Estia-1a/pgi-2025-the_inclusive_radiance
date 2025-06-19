@@ -1,5 +1,6 @@
 #include <estia-image.h>
 #include <stdio.h>
+#include<stdlib.h>
 
 #include "features.h"
 #include "utils.h"
@@ -153,21 +154,18 @@ void min_pixel(char *source_path, FILE*)
     free_image_data(data);
 }
 
-typedef struct { unsigned char R, G, B; } PixelRGB;
-
-static PixelRGB* get_pixel(unsigned char *data, unsigned int width, unsigned int height,
-                           unsigned int channels, unsigned int x, unsigned int y) {
-    if (!data || x >= width || y >= height) return NULL;
-    return (PixelRGB*)(data + ((size_t)y * width + x) * channels);
-}
-
-void print_pixel(const char *filename, int x, int y)
-{
-    unsigned char *data;
-    int width, height, channels;
-    if (read_image_data((char*)filename, &data, &width, &height, &channels)) return;
-    PixelRGB *p = get_pixel(data, width, height, channels, x, y);
-    if (p) printf("print_pixel (%d,%d): %u,%u,%u\n", x, y, p->R, p->G, p->B);
+void print_pixel(const char *filename, int x, int y){
+    unsigned char* data = NULL;
+    int width = 0, height = 0, n = 0;
+    pixelRGB* pixel;
+ 
+    read_image_data(filename, &data, &width, &height, &n);
+ 
+    pixel = get_pixel(data, width, height, n, x, y);
+ 
+    if(pixel != NULL){
+        printf("print_pixel (%d, %d): %d, %d, %d", x, y, pixel->R, pixel->G, pixel->B);
+    }
     free_image_data(data);
 }
 
@@ -316,7 +314,7 @@ void scale_crop(const char *source_path, int cx, int cy, int w, int h)
         }
     }
 
-    write_image_data("image_out.bmp", out, w, h, ch);
+    write_image_data("image_out.bmp", out, w, h);
     free(orig);
     free(out);
 }
@@ -357,7 +355,7 @@ void scale_nearest(const char *source_path, float scale)
                 dst[(y * nw + x) * ch + c] = src[(sy * ow + sx) * ch + c];
         }
     }
-    write_image_data("image_out.bmp", dst, nw, nh, ch);
+    write_image_data("image_out.bmp", dst, nw, nh);
     free(src);
     free(dst);
 }
@@ -391,7 +389,7 @@ void scale_bilinear(const char *path, float scale)
             }
         }
     }
-    write_image_data("image_out.bmp", dst, nw, nh, ch);
+    write_image_data("image_out.bmp", dst, nw, nh);
     free(src);
     free(dst);
 }
@@ -418,7 +416,7 @@ void color_desaturate(const char *source_path)
         if (ch == 4) dst[idx + 3] = src[idx + 3];
     }
 
-    write_image_data("image_out.bmp", dst, w, h, ch);
+    write_image_data("image_out.bmp", dst, w, h);
     free(src);
     free(dst);
 }
@@ -498,17 +496,17 @@ void color_gray_luminance(const char *filename) {
     free_image_data(data);    
 }
 
-void rotate_cw(const char *filename) {
-    unsigned char *data = NULL;
+void rotate_cw(const char *input_path) {
+    unsigned char *data = NULL, *rotated_data;
     int width = 0, height = 0, n = 0;
  
-    read_image_data(filename, &data, &width, &height, &n);
+    read_image_data(input_path, &data, &width, &height, &n);
  
     int new_width = height;
     int new_height = width;
     int size = width * height * n;
  
-    char *rotated_data = malloc(size);
+        rotated_data = malloc(size);
  
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
@@ -523,7 +521,7 @@ void rotate_cw(const char *filename) {
         }
     }
 
-    write_image_data("image_out.bmp", out, new_width, new_height);
+    write_image_data("image_out.bmp", rotated_data, new_width, new_height);
     free_image_data(data);
 }
 
