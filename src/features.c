@@ -17,10 +17,10 @@ void helloWorld() {
 
 void dimension(const char *source_path)
 {
-    unsigned char *pixels = NULL;
+    unsigned char *data = NULL;
     int w = 0, h = 0, channels = 0;
 
-    if (read_image_data(source_path, &pixels, &w, &h, &channels) != 0) {
+    if (read_image_data(source_path, &data, &w, &h, &channels) != 0) {
         fputs("error: impossible de charger l’image « ", stderr);
         fputs(source_path, stderr);
         fputs(" »\n", stderr);
@@ -28,7 +28,7 @@ void dimension(const char *source_path)
     }
 
     printf("dimension: %d, %d\n", w, h);
-    free(pixels);
+    free_image_data(data);
 }
 
 void first_pixel(char *source_path) {
@@ -41,14 +41,14 @@ void first_pixel(char *source_path) {
     }
     if (channels < 3) {
         printf("Need at least 3 channels\n");
-        free(data);
+        free_image_data(data);
         return;
     }
     int r = data[0];
     int g = data[1];
     int b = data[2];
     printf("first_pixel: %d, %d, %d\n", r, g, b);
-    free(data);
+    free_image_data(data);
 }
 
 void tenth_pixel(char *source_path) {
@@ -61,12 +61,12 @@ void tenth_pixel(char *source_path) {
     }
     if (channels < 3) {
         printf("Need at least 3 channels\n");
-        free(data);
+        free_image_data(data);
         return;
     }
     if (width < 10) {
         printf("Image must be at least 10 pixels wide\n");
-        free(data);
+        free_image_data(data);
         return;
     }
     int pixel_index = 9 * channels;
@@ -74,7 +74,7 @@ void tenth_pixel(char *source_path) {
     int g = data[pixel_index + 1];
     int b = data[pixel_index + 2];
     printf("tenth_pixel: %d, %d, %d\n", r, g, b);
-    free(data);
+    free_image_data(data);
 }
 
 void second_line(const char *source_path)
@@ -92,10 +92,10 @@ void second_line(const char *source_path)
     int g = data[offset + 1];
     int b = data[offset + 2];
     printf("second_line: %d, %d, %d\n", r, g, b);
-    free(data);
+    free_image_data(data);
 }
 
-void max_pixel(const char *source_path)
+void max_pixel(char *source_path, FILE* ) 
 {
     unsigned char *data = NULL;
     int w = 0, h = 0, ch = 0;
@@ -122,14 +122,14 @@ void max_pixel(const char *source_path)
         }
     }
     printf("max_pixel (%d, %d): %d, %d, %d\n", max_x, max_y, r, g, b);
-    free(data);
+    free_image_data(data);
 }
 
-void min_pixel(const char *source_path)
+void min_pixel(char *source_path, FILE*)
 {
-    unsigned char *buf = NULL;
+    unsigned char *data = NULL;
     int w = 0, h = 0, ch = 0;
-    if (read_image_data(source_path, &buf, &w, &h, &ch) != 0) {
+    if (read_image_data(source_path, &data, &w, &h, &ch) != 0) {
         fputs("error: impossible de charger « ", stderr);
         fputs(source_path, stderr);
         fputs(" »\n", stderr);
@@ -140,7 +140,7 @@ void min_pixel(const char *source_path)
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
             int idx = (y * w + x) * ch;
-            int rr = buf[idx], gg = buf[idx + 1], bb = buf[idx + 2];
+            int rr = data[idx], gg = data[idx + 1], bb = data[idx + 2];
             int sum = rr + gg + bb;
             if (sum < min_sum) {
                 min_sum = sum;
@@ -150,7 +150,7 @@ void min_pixel(const char *source_path)
         }
     }
     printf("min_pixel (%d, %d): %d, %d, %d\n", mx, my, r, g, b);
-    free(buf);
+    free_image_data(data);
 }
 
 typedef struct { unsigned char R, G, B; } PixelRGB;
@@ -161,35 +161,35 @@ static PixelRGB* get_pixel(unsigned char *data, unsigned int width, unsigned int
     return (PixelRGB*)(data + ((size_t)y * width + x) * channels);
 }
 
-void print_pixel(const char *filename, int x, int y) {
+void print_pixel(const char *filename, int x, int y)
+{
     unsigned char *data;
     int width, height, channels;
     if (read_image_data((char*)filename, &data, &width, &height, &channels)) return;
     PixelRGB *p = get_pixel(data, width, height, channels, x, y);
     if (p) printf("print_pixel (%d,%d): %u,%u,%u\n", x, y, p->R, p->G, p->B);
-    free(data);
+    free_image_data(data);
 }
 
-void color_red(const char *filename){
-    unsigned char *data, *out;
-    int width,height,channels;
-    if(read_image_data((char*)filename,&data,&width,&height,&channels)) return;
-    size_t total = (size_t)width*height;
-    out = malloc(total*channels);
-    for(size_t i=0;i<total;i++){
-        unsigned char *src = data + i*channels;
-        unsigned char *dst = out  + i*channels;
-        dst[0] = src[0];
-        if(channels>1) dst[1] = 0;
-        if(channels>2) dst[2] = 0;
-        if(channels>3) dst[3] = src[3];
+void color_red(const char *filename)
+{
+    unsigned char *data = NULL;
+    int width = 0, height = 0, n = 0;
+   
+    read_image_data(filename, &data, &width, &height, &n);
+ 
+    int size = width * height * n;
+ 
+    for (int i = 0; i < size; i += n) {
+        data[i+1] = 0;      
+        data[i+2] = 0;      
     }
-    write_image_data("image_out.bmp",out,width,height);
-    free(data);
-    free(out);
+ 
+    write_image_data("image_out.bmp", data, width, height);
+    free_image_data(data);    
 }
 
-void max_component(const char *source_path, char comp)
+void max_component(char *source_path, char component, FILE*) 
 {
     unsigned char *data = NULL;
     int w = 0, h = 0, ch = 0;
@@ -199,7 +199,7 @@ void max_component(const char *source_path, char comp)
         fputs(" »\n", stderr);
         return;
     }
-    int comp_idx = (comp == 'G') ? 1 : (comp == 'B') ? 2 : 0;
+    int comp_idx = (component == 'G') ? 1 : (component == 'B') ? 2 : 0;
     int best = -1, bx = 0, by = 0, v = 0;
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
@@ -211,43 +211,43 @@ void max_component(const char *source_path, char comp)
             }
         }
     }
-    printf("max_component %c (%d, %d): %d\n", comp, bx, by, v);
-    free(data);
+    printf("max_component %c (%d, %d): %d\n", component, bx, by, v);
+    free_image_data(data);
 }
 
-void min_component(const char *source_path, char comp)
+void min_component(char *source_path, char component, FILE*) 
 {
-    unsigned char *dat = NULL;
+    unsigned char *data = NULL;
     int width = 0, height = 0, channels = 0;
-    if (read_image_data(source_path, &dat, &width, &height, &channels) != 0) {
+    if (read_image_data(source_path, &data, &width, &height, &channels) != 0) {
         fputs("error: impossible de charger « ", stderr);
         fputs(source_path, stderr);
         fputs(" »\n", stderr);
         return;
     }
-    int idx_comp = (comp == 'G') ? 1 : (comp == 'B') ? 2 : 0;
+    int idx_comp = (component == 'G') ? 1 : (component == 'B') ? 2 : 0;
     int best = 256, bx = 0, by = 0, value = 0;
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             int i = (y * width + x) * channels + idx_comp;
-            int cur = dat[i];
+            int cur = data[i];
             if (cur < best) {
                 best = cur; bx = x; by = y; value = cur;
             }
         }
     }
-    printf("min_component %c (%d, %d): %d\n", comp, bx, by, value);
-    free(dat);
+    printf("min_component %c (%d, %d): %d\n", component, bx, by, value);
+    free_image_data(data);
 }
 
 void stat_report(const char *source_path)
 {
-    unsigned char *buf = NULL;
+    unsigned char *data = NULL;
     int w = 0, h = 0, ch = 0;
-    if (read_image_data(source_path, &buf, &w, &h, &ch) != 0) return;
+    if (read_image_data(source_path, &data, &w, &h, &ch) != 0) return;
 
     FILE *out = fopen("stat_report.txt", "w");
-    if (!out) { free(buf); return; }
+    if (!out) { free_image_data(data); return; }
 
     fprintf(out, "dimension: %d, %d\n\n", w, h);
 
@@ -256,28 +256,28 @@ void stat_report(const char *source_path)
     for (int y = 0; y < h; y++)
         for (int x = 0; x < w; x++) {
             int i = (y * w + x) * ch;
-            int r = buf[i], g = buf[i+1], b = buf[i+2];
+            int r = data[i], g = data[i+1], b = data[i+2];
             int s = r + g + b;
             if (s > maxs) { maxs = s; mx = x; my = y; }
             if (s < mins) { mins = s; ix = x; iy = y; }
         }
     fprintf(out, "max_pixel (%d, %d): %d, %d, %d\n\n",
             mx, my,
-            buf[(my*w+mx)*ch],
-            buf[(my*w+mx)*ch+1],
-            buf[(my*w+mx)*ch+2]);
+            data[(my*w+mx)*ch],
+            data[(my*w+mx)*ch+1],
+            data[(my*w+mx)*ch+2]);
     fprintf(out, "min_pixel (%d, %d): %d, %d, %d\n\n",
             ix, iy,
-            buf[(iy*w+ix)*ch],
-            buf[(iy*w+ix)*ch+1],
-            buf[(iy*w+ix)*ch+2]);
+            data[(iy*w+ix)*ch],
+            data[(iy*w+ix)*ch+1],
+            data[(iy*w+ix)*ch+2]);
 
     for (int c = 0; c < 3; c++) {
         int bestMax = -1, bx = 0, by = 0;
         int bestMin = 256, nx = 0, ny = 0;
         for (int y = 0; y < h; y++)
             for (int x = 0; x < w; x++) {
-                int v = buf[(y*w+x)*ch + c];
+                int v = data[(y*w+x)*ch + c];
                 if (v > bestMax) { bestMax = v; bx = x; by = y; }
                 if (v < bestMin) { bestMin = v; nx = x; ny = y; }
             }
@@ -289,7 +289,7 @@ void stat_report(const char *source_path)
     }
 
     fclose(out);
-    free(buf);
+    free_image_data(data);
 }
 
 void scale_crop(const char *source_path, int cx, int cy, int w, int h)
@@ -321,26 +321,21 @@ void scale_crop(const char *source_path, int cx, int cy, int w, int h)
     free(out);
 }
 
-void color_green(const char *filename)
-{
-    unsigned char *data, *out;
-    int width, height, channels;
-    if (read_image_data((char*)filename, &data, &width, &height, &channels)) return;
-
-    size_t total = (size_t)width * height;
-    out = malloc(total * channels);
-    for (size_t i = 0; i < total; i++) {
-        unsigned char *src = data + i * channels;
-        unsigned char *dst = out  + i * channels;
-        if (channels > 0) dst[0] = 0;
-        if (channels > 1) dst[1] = src[1];
-        if (channels > 2) dst[2] = 0;
-        if (channels > 3) dst[3] = src[3];
+void color_green(const char *filename) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, n = 0;
+   
+    read_image_data(filename, &data, &width, &height, &n);
+ 
+    int size = width * height * n;
+ 
+    for (int i = 0; i < size; i += n) {
+        data[i] = 0;      
+        data[i + 2] = 0;      
     }
-
-    write_image_data("image_out.bmp", out, width, height);
-    free(data);
-    free(out);
+ 
+    write_image_data("image_out.bmp", data, width, height);
+    free_image_data(data);    
 }
 
 void scale_nearest(const char *source_path, float scale)
@@ -428,116 +423,108 @@ void color_desaturate(const char *source_path)
     free(dst);
 }
 
-void color_blue(const char *filename)
-{
-    unsigned char *data, *out;
-    int width, height, channels;
-    if (read_image_data((char*)filename, &data, &width, &height, &channels)) return;
-    size_t total = (size_t)width * height;
-    out = malloc(total * channels);
-    for (size_t i = 0; i < total; i++) {
-        unsigned char *src = data + i*channels;
-        unsigned char *dst = out  + i*channels;
-        if (channels>0) dst[0] = 0;
-        if (channels>1) dst[1] = 0;
-        if (channels>2) dst[2] = src[2];
-        if (channels>3) dst[3] = src[3];
+void color_blue(const char *filename) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, n = 0;
+   
+    read_image_data(filename, &data, &width, &height, &n);
+ 
+    int size = width * height * n;
+ 
+    for (int i = 0; i < size; i += n) {
+        data[i] = 0;      
+        data[i + 1] = 0;      
     }
-    write_image_data("image_out.bmp", out, width, height);
-    free(data);
-    free(out);
+ 
+    write_image_data("image_out.bmp", data, width, height);
+    free_image_data(data);    
 }
 
-void color_gray(const char *filename)
-{
-    unsigned char *data, *out;
-    int width, height, channels;
-    if (read_image_data((char*)filename, &data, &width, &height, &channels)) return;
-    size_t total = (size_t)width * height;
-    out = malloc(total * channels);
-    for (size_t i = 0; i < total; i++) {
-        unsigned char *src = data + i*channels;
-        unsigned char *dst = out  + i*channels;
-        unsigned char v = (src[0] + src[1] + src[2]) / 3;
-        if (channels > 0) dst[0] = v;
-        if (channels > 1) dst[1] = v;
-        if (channels > 2) dst[2] = v;
-        if (channels > 3) dst[3] = src[3];
+void color_gray(const char *filename) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, n = 0;
+    int gray;
+   
+    read_image_data(filename, &data, &width, &height, &n);
+ 
+    int size = width * height * n;
+ 
+    for (int i = 0; i < size; i += n) {
+        gray = (data[i] + data[i+1] + data[i+2]) / 3;
+        data[i] = gray;      
+        data[i + 1] = gray;
+        data[i + 2] = gray;      
     }
-    write_image_data("image_out.bmp", out, width, height);
-    free(data);
-    free(out);
+ 
+    write_image_data("image_out.bmp", data, width, height);
+    free_image_data(data);    
 }
 
-void color_invert(const char *filename)
-{
-    unsigned char *data, *out;
-    int width, height, channels;
-    if (read_image_data((char*)filename, &data, &width, &height, &channels))
-        return;
-    size_t total = (size_t)width * height;
-    out = malloc(total * channels);
-    for (size_t i = 0; i < total; i++) {
-        unsigned char *src = data + i * channels;
-        unsigned char *dst = out  + i * channels;
-        if (channels > 0) dst[0] = 255 - src[0];
-        if (channels > 1) dst[1] = 255 - src[1];
-        if (channels > 2) dst[2] = 255 - src[2];
-        if (channels > 3) dst[3] = src[3];
+void color_invert(const char *filename) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, n = 0;
+   
+    read_image_data(filename, &data, &width, &height, &n);
+ 
+    int size = width * height * n;
+ 
+    for (int i = 0; i < size; i += n) {
+        data[i] = 255 - data[i];
+        data[i+1] = 255 - data[i+1];      
+        data[i+2] = 255 - data[i+2];      
     }
-    write_image_data("image_out.bmp", out, width, height);
-    free(data);
-    free(out);
+ 
+    write_image_data("image_out.bmp", data, width, height);
+    free_image_data(data);    
 }
 
-void color_gray_luminance(const char *filename)
-{
-    unsigned char *data, *out;
-    int width, height, channels;
-    if (read_image_data((char*)filename, &data, &width, &height, &channels))
-        return;
-    size_t total = (size_t)width * height;
-    out = malloc(total * channels);
-    for (size_t i = 0; i < total; i++) {
-        unsigned char *src = data + i * channels;
-        unsigned char *dst = out  + i * channels;
-        unsigned char v = (unsigned char)(0.21f * src[0] + 0.72f * src[1] + 0.07f * src[2]);
-        if (channels > 0) dst[0] = v;
-        if (channels > 1) dst[1] = v;
-        if (channels > 2) dst[2] = v;
-        if (channels > 3) dst[3] = src[3];
+void color_gray_luminance(const char *filename) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, n = 0;
+    int gray;
+   
+    read_image_data(filename, &data, &width, &height, &n);
+ 
+    int size = width * height * n;
+ 
+    for (int i = 0; i < size; i += n) {
+        gray = (data[i]*0.21 + data[i+1]*0.72 + data[i+2]*0.07);
+        data[i] = gray;      
+        data[i + 1] = gray;
+        data[i + 2] = gray;      
     }
-    write_image_data("image_out.bmp", out, width, height);
-    free(data);
-    free(out);
+ 
+    write_image_data("image_out.bmp", data, width, height);
+    free_image_data(data);    
 }
 
-void rotate_cw(const char *filename)
-{
-    unsigned char *data, *out;
-    int width, height, channels;
-    if (read_image_data((char*)filename, &data, &width, &height, &channels))
-        return;
-
-    int new_width  = height;
+void rotate_cw(const char *filename) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, n = 0;
+ 
+    read_image_data(filename, &data, &width, &height, &n);
+ 
+    int new_width = height;
     int new_height = width;
-    size_t total   = (size_t)width * height;
-    out = malloc(total * channels);
-
+    int size = width * height * n;
+ 
+    char *rotated_data = malloc(size);
+ 
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            int new_x = height - 1 - y;
-            int new_y = x;
-            unsigned char *src = data + ((size_t)y * width + x) * channels;
-            unsigned char *dst = out  + ((size_t)new_y * new_width + new_x) * channels;
-            for (int c = 0; c < channels; c++)
-                dst[c] = src[c];
+            int index = (y * width + x) * n;
+            int rota_x = height - 1 - y;
+            int rota_y = x;
+            int rota_index = (rota_y * new_width + rota_x) * n;
+ 
+            for (int i = 0; i < n; i++) {
+                rotated_data[rota_index + i] = data[index + i];
+            }
         }
     }
 
     write_image_data("image_out.bmp", out, new_width, new_height);
-    free(data);
-    free(out);
+    free_image_data(data);
 }
 
 void rotate_acw(const char *filename)
@@ -564,8 +551,7 @@ void rotate_acw(const char *filename)
     }
 
     write_image_data("image_out.bmp", out, new_width, new_height);
-    free(data);
-    free(out);
+    free_image_data(data);
 }
 
 void mirror_horizontal(const char *filename)
@@ -587,8 +573,7 @@ void mirror_horizontal(const char *filename)
         }
     }
     write_image_data("image_out.bmp", out, width, height);
-    free(data);
-    free(out);
+    free_image_data(data);
 }
 
 void mirror_vertical(const char *filename)
@@ -610,8 +595,7 @@ void mirror_vertical(const char *filename)
         }
     }
     write_image_data("image_out.bmp", out, width, height);
-    free(data);
-    free(out);
+    free_image_data(data);
 }
 
 void mirror_total(const char *filename)
@@ -633,6 +617,5 @@ void mirror_total(const char *filename)
         }
     }
     write_image_data("image_out.bmp", out, width, height);
-    free(data);
-    free(out);
+    free_image_data(data);
 }

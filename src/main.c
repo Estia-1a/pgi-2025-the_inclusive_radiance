@@ -31,135 +31,141 @@ int main(int argc, char **argv) {
     /* helloworld() function is defined in feature.h and implemented in feature.c */
     helloWorld();
   }
-  /*
-   * TO COMPLETE
-   */
-  
-  return 0;
-}
-else if (strncmp(configuration.command, "dimension", 9) == 0) {
-    if (configuration.filenames_count < 1) {
-        fputs("error: aucun fichier spécifié pour « dimension »\n", stderr);
-        return 1;
-    }
+ 
+  else if ( strcmp( configuration.command, "dimension") == 0 ) {
+    /* dimension() function is defined in feature.h and implemented in feature.c */
     dimension(configuration.filenames[0]);
-}
-
-
-else if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
+  }
+ 
+  else if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
     first_pixel(configuration.filenames[0]);
-    return 0;
-}
-
-else if ( strncmp( configuration.command, "tenth_pixel", 11 ) == 0 ) {
+  }
+ 
+  else if ( strncmp( configuration.command, "tenth_pixel", 11 ) == 0 ) {
+    /* tenth_pixel() function is defined in feature.h and implemented in feature.c */
     tenth_pixel(configuration.filenames[0]);
-}
-
-else if (strncmp(configuration.command, "second_line", 11) == 0) {
-        if (configuration.filenames_count < 1) return 1;
-        second_line(configuration.filenames[0]);
-    }
-
-else if (strncmp(configuration.command, "max_pixel", 9) == 0) {
-    if (configuration.filenames_count < 1) return 1;
-    max_pixel(configuration.filenames[0]);
-}
-
-else if (strncmp(configuration.command, "min_pixel", 9) == 0) {
-    if (configuration.filenames_count < 1) return 1;
-    min_pixel(configuration.filenames[0]);
-}
-
-else if ( strncmp( configuration.command, "print_pixel", 11 ) == 0 ) {
-    print_pixel(configuration.filenames[0]);
-    return 0;
-}
-
-else if ( strncmp( configuration.command, "color_red", 9 ) == 0 ) {
-    color_red(configuration.filenames[0]);
-    return 0;
-}
-
-else if (strncmp(configuration.command, "max_component", 13) == 0) {
-    if (configuration.filenames_count < 1) return 1;
-    if (configuration.argc_extra < 1) return 1;
-    char comp = configuration.extra_args[0][0];
-    max_component(configuration.filenames[0], comp);
-}
-
-else if (strncmp(configuration.command, "min_component", 13) == 0) {
-    if (configuration.filenames_count < 1 || configuration.argc_extra < 1) return 1;
-    char comp = configuration.extra_args[0][0];
-    min_component(configuration.filenames[0], comp);
-}
-
-else if (strncmp(configuration.command, "stat_report", 11) == 0) {
-    if (configuration.filenames_count < 1) return 1;
-    stat_report(configuration.filenames[0]);
-}
-
-else if (strncmp(configuration.command, "scale_crop", 10) == 0) {
-    if (configuration.filenames_count < 1 || configuration.argc_extra < 4) return 1;
-    int cx = atoi(configuration.extra_args[0]);
-    int cy = atoi(configuration.extra_args[1]);
-    int w  = atoi(configuration.extra_args[2]);
-    int h  = atoi(configuration.extra_args[3]);
-    scale_crop(configuration.filenames[0], cx, cy, w, h);
-}
-
-else if ( strncmp( configuration.command, "color_green", 11 ) == 0 ) {
+  }
+ 
+  else if ( strncmp( configuration.command, "second_line", 11 ) == 0 ) {
+    /* second_line() function is defined in feature.h and implemented in feature.c */
+    second_line(configuration.filenames[0]);
+  }
+ 
+  else if ( strncmp( configuration.command, "print_pixel", 11 ) == 0 ) {
+    /* print_pixel() function is defined in feature.h and implemented in feature.c */
+    int x = atoi(configuration.arguments[0]);
+    int y = atoi(configuration.arguments[1]);
+    print_pixel(configuration.filenames[0], x, y);
+  }
+   
+  else if ( strncmp( configuration.command, "max_pixel", 11 ) == 0 ) {
+    /* max_pixel() function is defined in feature.h and implemented in feature.c */
+    max_pixel(configuration.filenames[0], stdout);
+  }
+ 
+  else if ( strncmp( configuration.command, "max_component", 11) == 0 ) {
+    /* max_component() function is defined in feature.h and implemented in feature.c */
+    char component = configuration.arguments[0][0];
+    max_component(configuration.filenames[0], component, stdout);
+  }
+ 
+  else if ( strncmp( configuration.command, "min_component", 11) == 0 ) {
+    /* min_component() function is defined in feature.h and implemented in feature.c */
+    char component = configuration.arguments[0][0];
+    min_component(configuration.filenames[0], component, stdout);
+  }
+ 
+  else if ( strncmp( configuration.command, "min_pixel", 11 ) == 0 ) {
+    /* min_pixel() function is defined in feature.h and implemented in feature.c */
+    min_pixel(configuration.filenames[0], stdout);
+  }
+ 
+  else if ( strncmp( configuration.command, "color_green", 11 ) == 0 ) {
+    /* color_green() function is defined in feature.h and implemented in feature.c */
     color_green(configuration.filenames[0]);
-    return 0;
-}
-
-else if (strncmp(configuration.command, "scale_nearest", 13) == 0) {
-    if (configuration.filenames_count < 1 || configuration.argc_extra < 1) return 1;
-    float s = atof(configuration.extra_args[0]);
-    scale_nearest(configuration.filenames[0], s);
-}
-
-else if (strncmp(configuration.command, "scale_bilinear", 14) == 0) {
-    if (configuration.filenames_count < 1 || configuration.argc_extra < 1) return 1;
-    scale_bilinear(configuration.filenames[0], atof(configuration.extra_args[0]));
-}
-
-else if (strncmp(configuration.command, "color_desaturate", 16) == 0) {
-    if (configuration.filenames_count < 1) return 1;
-    color_desaturate(configuration.filenames[0]);
-}
-
-} else if (strncmp(configuration.command, "color_blue", 10) == 0) {
+  }
+ 
+  else if ( strncmp( configuration.command, "color_blue", 11 ) == 0 ) {
+    /* color_blue() function is defined in feature.h and implemented in feature.c */
     color_blue(configuration.filenames[0]);
-}
-
-} else if (strncmp(configuration.command, "color_gray", 10) == 0) {
+  }
+ 
+  else if ( strncmp( configuration.command, "color_red", 11 ) == 0 ) {
+    /* color_red() function is defined in feature.h and implemented in feature.c */
+    color_red(configuration.filenames[0]);
+  }
+ 
+  else if ( strncmp( configuration.command, "color_gray", 11 ) == 0 ) {
+    /* color_gray() function is defined in feature.h and implemented in feature.c */
     color_gray(configuration.filenames[0]);
-}
-
-} else if (strncmp(configuration.command, "color_invert", 12) == 0) {
+  }
+ 
+  else if ( strncmp( configuration.command, "color_invert", 11 ) == 0 ) {
+    /* color_invert() function is defined in feature.h and implemented in feature.c */
     color_invert(configuration.filenames[0]);
-}
-
-} else if (strncmp(configuration.command, "color_gray_luminance", 20) == 0) {
+  }
+ 
+  else if ( strncmp( configuration.command, "color_gray_luminance", 11 ) == 0 ) {
+    /* color_gray_luminance() function is defined in feature.h and implemented in feature.c */
     color_gray_luminance(configuration.filenames[0]);
-}
-
-} else if (strncmp(configuration.command, "rotate_cw", 9) == 0) {
+  }
+ 
+  else if ( strncmp( configuration.command, "rotate_cw", 11 ) == 0 ) {
+    /* rotate_cw() function is defined in feature.h and implemented in feature.c */
     rotate_cw(configuration.filenames[0]);
-}
-
-} else if (strncmp(configuration.command, "rotate_acw", 10) == 0) {
+  }
+ 
+  else if ( strncmp( configuration.command, "rotate_acw", 11 ) == 0 ) {
+    /* rotate_acw() function is defined in feature.h and implemented in feature.c */
     rotate_acw(configuration.filenames[0]);
-}
-
-} else if (strncmp(configuration.command, "mirror_horizontal", 17) == 0) {
+  }
+ 
+  else if ( strncmp( configuration.command, "mirror_horizontal", 11 ) == 0 ) {
+    /* mirror_horizontal() function is defined in feature.h and implemented in feature.c */
     mirror_horizontal(configuration.filenames[0]);
-}
-
-} else if (strncmp(configuration.command, "mirror_vertical", 15) == 0) {
+  }
+   
+  else if ( strncmp( configuration.command, "mirror_vertical", 11 ) == 0 ) {
+    /* mirror_vertical() function is defined in feature.h and implemented in feature.c */
     mirror_vertical(configuration.filenames[0]);
-}
-
-} else if (strncmp(configuration.command, "mirror_total", 12) == 0) {
+  }
+ 
+  else if ( strncmp( configuration.command, "mirror_total", 11 ) == 0 ) {
+    /* mirror_total() function is defined in feature.h and implemented in feature.c */
     mirror_total(configuration.filenames[0]);
+  }
+ 
+  else if ( strncmp( configuration.command, "color_desaturate", 11 ) == 0 ) {
+    /* color_desaturate() function is defined in feature.h and implemented in feature.c */
+    color_desaturate(configuration.filenames[0]);
+  }
+ 
+  else if ( strncmp( configuration.command, "scale_crop", 11 ) == 0 ) {
+    /* scale_crop() function is defined in feature.h and implemented in feature.c */
+    int pixel_x = atoi(configuration.arguments[0]);
+    int pixel_y = atoi(configuration.arguments[1]);
+    int new_width = atoi(configuration.arguments[2]);
+    int new_heigth = atoi(configuration.arguments[3]);
+    scale_crop(configuration.filenames[0], pixel_x, pixel_y, new_width, new_heigth);
+  }
+ 
+else if ( strncmp( configuration.command, "scale_nearest", 11 ) == 0 ) {
+    /* scale_nearest() function is defined in feature.h and implemented in feature.c */
+    float x = atof(configuration.arguments[0]);
+    scale_nearest(configuration.filenames[0], x);
+  }
+ 
+else if ( strncmp( configuration.command, "scale_bilinear", 11 ) == 0 ) {
+    /* scale_bilinear() function is defined in feature.h and implemented in feature.c */
+    float x = atof(configuration.arguments[0]);
+    scale_bilinear(configuration.filenames[0], x);
+  }
+ 
+else if ( strncmp( configuration.command, "stat_report", 11 ) == 0 ) {
+  /* stat_report() function is defined in feature.h and implemented in feature.c */
+  stat_report(configuration.filenames[0]);
+}
+ 
+  return 0;
 }
