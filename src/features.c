@@ -336,28 +336,34 @@ void color_green(const char *filename) {
     free_image_data(data);    
 }
 
-void scale_nearest(const char *source_path, float scale)
-{
-    unsigned char *src = NULL;
-    int ow = 0, oh = 0, ch = 0;
-    if (read_image_data(source_path, &src, &ow, &oh, &ch) != 0) return;
-    int nw = (int)(ow * scale);
-    int nh = (int)(oh * scale);
-    unsigned char *dst = malloc(nw * nh * ch);
-    if (!dst) { free(src); return; }
-    for (int y = 0; y < nh; y++) {
-        int sy = (int)floorf(y / scale);
-        if (sy < 0) sy = 0; else if (sy >= oh) sy = oh - 1;
-        for (int x = 0; x < nw; x++) {
-            int sx = (int)floorf(x / scale);
-            if (sx < 0) sx = 0; else if (sx >= ow) sx = ow - 1;
-            for (int c = 0; c < ch; c++)
-                dst[(y * nw + x) * ch + c] = src[(sy * ow + sx) * ch + c];
+void scale_nearest(const char *source_path, float scale) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, n = 0;
+ 
+    read_image_data(source_path, &data, &width, &height, &n);
+ 
+    int new_width = width * scale;
+    int new_height = height * scale;
+ 
+    unsigned char *new_data = malloc(new_width * new_height * n);
+ 
+    for (int i = 0; i < new_width * new_height; i++) {
+        int x = i % new_width;
+        int y = i / new_width;
+ 
+        int src_x = (int)(x / scale);
+        int src_y = (int)(y / scale);
+ 
+        int dst_idx = i * n;
+        int src_idx = (src_y * width + src_x) * n;
+ 
+        for (int j = 0; j < n; j++) {
+            new_data[dst_idx + j] = data[src_idx + j];
         }
     }
-    write_image_data("image_out.bmp", dst, nw, nh);
-    free(src);
-    free(dst);
+ 
+    write_image_data("image_out.bmp", new_data, new_width, new_height);
+    free_image_data(data);
 }
 
 void scale_bilinear(const char *path, float scale)
