@@ -1,0 +1,22 @@
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘min_pixel’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:139:19: error: ‘INT_MAX’ undeclared (first use in this function)
+  139 |     int min_sum = INT_MAX;
+      |                   ^~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:7:1: note: ‘INT_MAX’ is defined in header ‘<limits.h>’; did you forget to ‘#include <limits.h>’?
+    6 | #include "utils.h"
+  +++ |+#include <limits.h>
+    7 | 
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:139:19: note: each undeclared identifier is reported only once for each function it appears in
+  139 |     int min_sum = INT_MAX;
+      |                   ^~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c: In function ‘stat_report’:
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:253:16: error: ‘INT_MAX’ undeclared (first use in this function)
+  253 |     int mins = INT_MAX, ix = 0, iy = 0;
+      |                ^~~~~~~
+/home/runner/work/pgi-2025-the_inclusive_radiance/pgi-2025-the_inclusive_radiance/src/features.c:253:16: note: ‘INT_MAX’ is defined in header ‘<limits.h>’; did you forget to ‘#include <limits.h>’?
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:93: CMakeFiles/freud.dir/src/features.c.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/freud.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+
+The process '/usr/local/bin/cmake' failed with exit code 2
